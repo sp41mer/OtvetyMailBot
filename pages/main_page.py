@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import selenium
 from page import *
+from list_page import *
 
 class MainPage(Page):
 
@@ -18,4 +19,8 @@ class MainPage(Page):
         bar.send_keys(query)
         bar_button = driver.find_element_by_css_selector(self.search_bar_button_class)
         bar_button.click()
+        next_page = ListPage(driver)
+        next_page.wait_for_container(driver)
+
+
 
