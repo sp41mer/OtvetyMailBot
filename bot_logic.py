@@ -43,6 +43,6 @@ for href in list_page.href_of_questions:
             inf_content=inf_content
         )
     except Exception as e:
-        print e
-        print 'Not unique url!'
+        print(e)
+        print('Not unique url!')
 

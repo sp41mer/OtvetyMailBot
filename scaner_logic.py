@@ -17,19 +17,18 @@ def make_answers():
         list_of_vectors = []
         for article in Article.select():
             list_of_matches = []
-            article_title_vector = article.inf_title
-            each_word_counter = pd.Series(article).value_counts()
+            article_title_vector = article.inf_title.split(' ')
+            each_word_counter = pd.Series(article_title_vector).value_counts()
             for word in vector_of_title:
                 try:
                     counter = each_word_counter[word]
                     list_of_matches.append(counter)
                 except Exception:
                     list_of_matches.append(0)
-            print list_of_matches
+            print(list_of_matches)
         #get vector of question content
         #make sets from it
         #look for mathes in each article
         #article with most matches - our answer
-        print 'Answer was found!'
 
 make_answers()
