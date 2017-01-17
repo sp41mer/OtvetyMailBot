@@ -1,4 +1,5 @@
 import peewee
+from playhouse.migrate import *
 
 database_sqlite = peewee.SqliteDatabase("temporary.db")
 
@@ -19,6 +20,8 @@ class Article(peewee.Model):
     href = peewee.TextField(default='', null=False)
     title = peewee.TextField(default='', null=False)
     text = peewee.TextField(default='', null=False)
+    #возможно не сохранилось
+    # is_scaned = peewee.BooleanField(default=False, null=False)
     inf_title = peewee.TextField(default='', null=False)
     inf_text = peewee.TextField(default='', null=False)
     keywords = peewee.TextField(default='', null=False)
@@ -32,3 +35,7 @@ class Text(peewee.Model):
     last_time = peewee.DateTimeField(null=True)
 
 database_sqlite.create_tables([Question, Article], safe=True)
+# migrator = SqliteMigrator(database_sqlite)
+# migrate(
+#     migrator.add_column('article', 'is_scaned', peewee.BooleanField(default=False, null=False))
+# )
