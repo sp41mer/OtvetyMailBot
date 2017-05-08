@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -6,6 +7,10 @@ from selenium.webdriver.support import expected_conditions as EC
 
 
 class Page():
+    def scroll_down(self,driver):
+        driver.execute_script('window.scrollTo(0,document.body.scrollHeight);')
+        driver.execute_script('window.scrollTo(0,document.body.scrollHeight);')
+        time.sleep(1)
 
     def open(self, driver):
         driver.get(self.url)
@@ -16,7 +21,7 @@ class Page():
                 EC.presence_of_element_located((By.ID, id))
             )
         except:
-            print "Couldn't wait for {}".format(id)
+            print("Couldn't wait for {}".format(id))
             driver.quit()
 
     def wait_by_css_selector(self,driver,selector):
@@ -25,7 +30,7 @@ class Page():
                 EC.presence_of_element_located((By.CSS_SELECTOR, selector))
             )
         except:
-            print "Couldn't wait for {}".format(selector)
+            print("Couldn't wait for {}".format(selector))
             driver.quit()
 
     def get_by_css_selector(self,driver,selector):
@@ -36,5 +41,5 @@ class Page():
             else:
                 return list_of_elements
         except:
-            print "Couldn't find element with {}".format(selector)
+            print("Couldn't find element with {}".format(selector))
 

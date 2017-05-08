@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import selenium
-from page import *
+from pages.page import *
 
 class ListPage(Page):
 
